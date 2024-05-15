@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <!-- Link to Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Londrina+Solid:wght@400;700&display=swap">
+    <!-- Link to your CSS file for additional styling -->
+    <link rel="stylesheet" href="{% static 'flashlearn/style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-logo-link">
+            <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+        </a>
+
+        <div class="navbar-text">
+            <a href="{% url 'signup' %}" class="navbar-link">SIGN UP</a>
+            <a href="{% url 'login' %}" class="navbar-link">LOG IN</a>
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <!-- Flashlearn Text with Text Shadow -->
+            <span class="flashlearn-text">FLASH<br>LEARN</span>
+            <span class="flashlearn-text-shadow">FLASH<br>LEARN</span>
+
+             <!-- Start button -->
+             <a href="" class="button">
+                <span class="button-text">START</span>
+            </a>
+    </div>
+
+
+    <!-- Footer -->
+    <img src="{% static 'flashlearn/footer.png' %}" alt="Flash Learn footer" class="footer">
+    <span class="footer-text">© 2024 Flash Learn. All rights reserved.</span>
+
+</body>
+</html>

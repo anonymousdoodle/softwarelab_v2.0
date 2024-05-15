@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Teachers</title>
+    <link rel="stylesheet" href="{% static 'flashlearn/adminstyle.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <!--- WIP -->
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-logo-link">
+            <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+        </a>
+        <div class="navbar-menu">
+            <ul>
+                <li>
+                    <a id="manage-content">Manage Content</a>
+                    <div class="dropdown-content" id="content-dropdown">
+                       <a href="{% url 'manageteachers' %}">Teachers</a>
+
+                       <!-- for handling cards -->
+                    </div>
+                </li>
+                <li>
+                    <a id="manage-accounts">Manage Accounts</a>
+                    <div class="dropdown-content" id="accounts-dropdown">
+                        <a href="{% url 'manageusers' %}">Users</a>
+                        <a href="{% url 'manageadmins' %}">Admins</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="managequiz-bg">
+        <div class="mng-box">
+            <div id="manage-label">Manage Content: Admins</div>
+            <div class="panel-box">
+                <div class="field-name">
+                    <div class="field-name-text">ID</div>
+                    <div class="field-name-text">Image</div>
+                    <div class="field-name-text">Name</div>
+                    
+                    <div class="field-name-text">Card(s)</div>
+                    <div class="field-name-text">Action</div>
+                </div>
+
+                <!-- for images -->
+                <div class="table-box">
+
+                    <button class = "btn1" value="submit">Edit</button>
+                    <!-- delete button goes here -->
+                    <button class="btn3">Archive</button>
+                </div>
+
+
+                <!-- Django template tags for dynamic table rows (use later)
+                
+                {% for item in quiz_data %}
+                <div class="table-row">
+                    <div>{{ item.id }}</div>
+                    <div>{{ item.assigned_teacher }}</div>
+                    <div>{{ item.question }}</div>
+                    <div>{{ item.answer }}</div>
+                    <div>Edit/Delete</div>
+                </div>
+                {% endfor %} -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

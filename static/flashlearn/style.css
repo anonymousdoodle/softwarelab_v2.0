@@ -1,0 +1,235 @@
+/*-----------------------  HOMEPAGE ------------------------------------*/
+body {
+    background-image: url('/static/flashlearn/FShomebg.png');
+    background-size: cover; /* Cover the entire background */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    font-family: Arial, sans-serif; /* Example font */
+    color: #ffffff; /* Example text color */
+}
+
+/* Empty navbar styles */
+.navbar {
+    background-color: #E59C2F; /* Navbar color */
+    height: 60px; /* Navbar height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -14px 15px 20px rgba(0, 0, 0, 0.5); 
+}
+
+/* Navbar logo styles */
+.navbar-logo {
+    position: absolute;
+    top: 10px;
+    left: 94px;
+}
+
+/* Navbar text styles */
+.navbar-text {
+    color: #ffffff; /* Text color */
+    font-size: 36px;
+    font-family: 'Lilita One', sans-serif; /* Use Lilita One font */
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Navbar link styles */
+.navbar-link {
+    color: #ffffff; 
+    text-decoration: none; 
+    margin: 0 20px;
+}
+
+/* Navbar link hover styles */
+.navbar-link:hover {
+    color: #FFEE51; /* Change color on hover */
+    transition: color 0.3s, background-color 0.3s;
+}
+
+/* Content styles */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 250px); /* Adjust height as needed */
+    font-family: 'Londrina Solid', cursive;
+}
+
+.flashlearn-text {
+    position: absolute;
+    font-size: 130px;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Size 2 stroke */
+    line-height: 0.75; /* Line height set to 75% of the font size */
+}
+
+/* Additional text shadow */
+.flashlearn-text-shadow {
+    position: absolute;
+    color: transparent;
+    font-size: 128px;
+    z-index: -1; /* Move behind the main text */
+    line-height: 0.75; /* Line height set to 75% of the font size */
+    text-shadow: 0px 8px 8px rgba(0, 0, 0, 0.7); /* Text shadow without affecting stroke */
+}
+
+/* Button styles */
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #E59C2F;
+    margin-top: 300px;
+    height: 50px;
+    width: 297px;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 40px;
+    font-family: 'Londrina Solid', cursive;
+    text-transform: uppercase;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.button::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    border: 2px solid #000000;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.button:hover {
+    color: #FFEE51;
+    background-color: #E59C2F;
+}
+
+.button-text {
+    position: relative;
+    z-index: 1;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Size 2 stroke */
+}
+
+/* Footer styles */
+.footer {
+    height: 205px;
+    position: fixed; /* Fixed position */
+    bottom: 0; /* Stick to the bottom of the viewport */
+    width: 100%; /* Full width of the viewport */
+}
+
+.footer-text {
+    color: white;
+    font-size: 16px;
+    bottom: 40px; /* Adjust the distance from the bottom */
+    left: 40%;
+    position: absolute; /* Position absolutely within .footer */
+    font-family: 'Lilita One', sans-serif;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+}
+
+/*------------------------- LOG IN AND SIGN UP ----------------------------------*/
+
+.back-btn {
+    position: absolute;
+    left: 65%;
+    top: 10%;
+}
+
+/* Clipboard form */
+.clipboard-form {
+    margin-top: 50px;
+    align-items: center;
+}
+
+.create-acc {
+    position: absolute;
+    top: 80px;
+    margin-left: 145px;
+    position: absolute;
+    font-family: 'Lilita One', sans-serif;
+    color: #000;
+    font-size: 48px;
+    text-align: center;
+}
+
+.login-msg {
+    position: absolute;
+    margin-left: 150px;
+    margin-top: 150px;
+    position: absolute;
+    font-family: 'Lilita One', sans-serif;
+    color: #000;
+    font-size: 48px;
+    text-align: center;
+}
+
+/* Signup Form styles */
+.signup-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 90%; /* 90% of the parent element's width */
+    padding: 20px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    z-index: 1; 
+}
+
+.form-group {
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+
+::placeholder {
+    font-family: 'Indie Flower', sans-serif;
+    font-size: 26px;
+    color: #000;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%; /* Full width */
+    height: 35px; /* Set height */
+    background-color: #C8C8C8 ;
+    border: none;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Indie Flower', sans-serif;
+    font-size: 27px;
+    color: #000;
+    border: none;
+    background-color: #C8C8C8;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.btn-signup {
+    color: #000;
+    font-family: 'Lilita One', sans-serif;
+    font-size: 36px;
+    background: none;
+    border: none;
+    box-shadow: none;
+    margin-left: 130px;
+}
+
+
+
+

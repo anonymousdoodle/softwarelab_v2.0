@@ -1,0 +1,203 @@
+/* FOR ADMIN PANEL */
+.navbar {
+    background-color: #E59C2F;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -14px 15px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.navbar-logo {
+    margin-top: 10px;
+    margin-left: 94px;
+}
+
+.navbar-menu ul {
+    display: flex;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-menu li {
+    margin-right: 20px;
+    position: relative;
+}
+
+.navbar-menu li a {
+    color: white;
+    font-size: 20px;
+    font-family: 'Lilita One', sans-serif;
+    text-decoration: none;
+    position: relative;
+    padding: 10px; /* Adjust padding */
+}
+
+.navbar-menu li a:hover {
+    color: #FFEE51;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #E59C2F;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+}
+
+.dropdown-content a:hover {
+    background-color: #E59C2F;
+}
+
+.navbar-menu li:hover .dropdown-content {
+    display: block;
+}
+
+#content-dropdown, 
+#accounts-dropdown {
+    margin-right: 300px;
+}
+
+#manage-content,
+#manage-accounts {
+    font-size: 30px;
+    font-family: 'Lilita One', sans-serif;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    position: relative;
+    margin-right: 300px;
+    top: 5%;
+    transform: translateY(-50%);
+}
+
+#manage-content:hover,
+#manage-content:active,
+#manage-accounts:hover,
+#manage-accounts:active {
+    color: #FFEE51;
+}
+
+/*-------------------------------- CONTENT --------------------------------------*/
+
+body {
+    background-color: #C8C8C8;
+    margin: 0;
+    padding: 0;
+}
+
+.managequiz-bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.mng-box {
+    width: 1254px;
+    height: 896px;
+    background-color: #874A08;
+    border-radius: 43px;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    padding: 20px;
+    position: relative;
+}
+
+#manage-label {
+    font-size: 30px;
+    font-family: 'Lilita One', sans-serif;
+    color: white;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 30px;
+    left: 100px;
+}
+
+.panel-box {
+    width: 1055px;
+    height: 758px;
+    background-color: white;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.field-name {
+    height: 50px;
+    background-color: #C8C8C8;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin: 10px;
+    font-size: 18px;
+    color: black;
+}
+
+.field-name-text {
+    font-size: 30px;
+    font-family: 'Lilita One', sans-serif;
+    margin-left: 70px;
+}
+
+input{
+    margin-left: 80px;
+    width: 178px;
+    height: 75px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 10px 0; /* Adjust margin values as needed */
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    font-family: 'Lilita One', sans-serif;
+}
+
+/* Sample style for table rows (customize as needed) */
+.table-row {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 16px;
+    color: black;
+}
+
+/* Button design */
+#manage-content .btn1,
+#manage-accounts .btn1,
+.managequiz-bg .btn1 {
+    border: none;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Lilita One', sans-serif;
+    background-color: #04AA6D !important; /* Green color for Edit button */
+}
+
+#manage-content .btn2,
+#manage-accounts .btn2,
+.managequiz-bg .btn2 {
+    border: none;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-family: 'Lilita One', sans-serif;
+    background-color: #FF6347 !important; /* Red color for Delete button */
+}

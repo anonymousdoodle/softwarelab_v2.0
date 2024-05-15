@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="{% static 'flashlearn/adminstyle.css' %}">
+
+</head>
+<body>
+    <!-- Navbar -->
+    
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-logo-link">
+            <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+        </a>
+        <div class="navbar-menu">
+            <ul>
+                <li>
+                    <a id="manage-content">Manage Content</a>
+                    <div class="dropdown-content" id="content-dropdown">
+                    <a href="{% url 'manageteachers' %}">Teachers</a>
+
+                    <!-- for handling teacher cards-->
+
+                    </div>
+                </li>
+                <li>
+                    <a id="manage-accounts">Manage Accounts</a>
+                    <div class="dropdown-content" id="accounts-dropdown">
+                        <a href="{% url 'manageusers' %}">Users</a>
+                        <a href="{% url 'manageadmins' %}">Admins</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="managequiz-bg">
+        <div class="mng-box">
+            <div id="manage-label">Manage Accounts: Users</div>
+            <div class="panel-box">
+                <div class="field-name">
+                    <div class="field-name-text">ID</div>
+                    <div class="field-name-text">Username</div>
+                    <div class="field-name-text">Parent's Email</div>
+                    <div class="field-name-text">Password</div>
+                    <div class="field-name-text">Action</div>
+                </div>
+
+          
+
+            {% for child_data in childdata %}
+            <div class="table-row">
+                <div class="field-name-text">{{ child_data.id }}</div>
+                <div class="field-name-text editable" data-field="username" data-userid="{{ child_data.id }}">{{ child_data.username }}</div>
+                <div class="field-name-text editable" data-field="email" data-userid="{{ child_data.id }}">{{ child_data.email }}</div>
+                <div class="field-name-text editable" data-field="password" data-userid="{{ child_data.id }}">{{ child_data.password }}</div>
+                <button class="btn1 edit-btn" onclick="window.location.href='/editusers/{{ child_data.id }}/'">Edit</button>
+
+
+                <button class="btn2 delacc" data-userid="{{ child_data.id }}" data-usertype="user">Delete</button>
+            </div>
+            {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $(".delacc").click(function() {
+            var userId = $(this).data("userid");
+            var userType = $(this).data("usertype");
+            
+            console.log("UserID:", userId); // Check user ID value
+            console.log("UserType:", userType); // Check user type value
+            
+            var csrftoken = getCookie('csrftoken');
+            console.log("CSRF Token:", csrftoken); // Check CSRF token value
+            
+            $.ajax({
+                type: "POST",
+                url: "{% url 'delete_user' user_id=0 %}".replace('0', userId),
+                data: {
+                    csrfmiddlewaretoken: csrftoken
+                },
+                success: function() {
+                    location.reload();
+                },
+                error: function(xhr, status, error) {
+                    console.error(xhr.responseText);
+                }
+            });
+        });
+       
+    });
+</script>
+
+
+</body>
+</html>
+

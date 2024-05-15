@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Admins</title>
+    <link rel="stylesheet" href="{% static 'flashlearn/adminstyle.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-logo-link">
+            <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+        </a>
+
+        <div class="navbar-menu">
+            <ul>
+                <li>
+                    <a id="manage-content">Manage Content</a>
+                    <div class="dropdown-content" id="content-dropdown">
+                    <a href="{% url 'manageteachers' %}">Teachers</a>
+
+                    <!-- for handling teacher cards-->
+
+                    </div>
+                </li>
+                <li>
+                    <a id="manage-accounts">Manage Accounts</a>
+                    <div class="dropdown-content" id="accounts-dropdown">
+                        <!--   -->
+                        <a href="{% url 'manageusers' %}">Users</a>
+                        <a href="{% url 'manageadmins' %}">Admins</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="managequiz-bg">
+        <div class="mng-box">
+            <div id="manage-label">Manage Accounts: Admins</div>
+            <div class="panel-box">
+                <div class="field-name">
+                    
+                    <div class="field-name-text">ID</div>
+                    <div class="field-name-text">Username</div>
+                    <div class="field-name-text">Password</div>
+                    <div class="field-name-text">Action</div>
+                </div>
+
+
+            
+            <form method="post" id="update-form" enctype="multipart/form-data" action="{% url 'update_admin' admin_user.id %}">
+                {% csrf_token %}
+                <input type="text" id="username" name="username" value="{{ admin_user.username }}">
+                <input type="password" id="password" name="password" value="{{ admin_user.password }}">
+               
+                <button type="submit" id="update-btn">Update</button>
+            </form>
+            
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+
+<script>
+    $(document).ready(function() {
+        $('#update-form').on('submit', function(event) {
+            event.preventDefault(); // Stop the form from causing a page refresh.
+            var form = $(this);
+
+            $.ajax({
+                type: "POST",
+                url: form.attr('action'),
+                data: form.serialize(),
+                success: function(response) {
+                    if (response.success) {
+                        window.location.href = response.redirect_url; // Redirect based on the server's response
+                    } else {
+                        console.log("Error updating: " + response.error); // Log or alert the error
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error("Update failed: " + xhr.responseText);
+                }
+            });
+        });
+    });
+</script>
+
+</script>
+
+</script>
+
+
+</body>
+</html>
+
+

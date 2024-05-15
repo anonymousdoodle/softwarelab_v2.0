@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <!-- Link to Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Londrina+Solid:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+
+    <!-- Link to your CSS file for additional styling -->
+    <link rel="stylesheet" href="{% static 'flashlearn/style.css' %}">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+    </div>
+
+<!-- Content -->
+<div class="content">
+    <img src="{% static 'flashlearn/back.png' %}" alt="back button" class="back-btn">
+    <div class="clipboard-form">
+        <span class="create-acc">CREATE AN<br>ACCOUNT</span>
+        <img src="{% static 'flashlearn/clipboard.png' %}" alt="clipboard" class="clipboard">
+
+        <!-- Signup Form -->
+        <form action="{% url 'signup' %}" method="POST" class="signup-form">
+        {% csrf_token %}
+        <!-- Input fields for username, email, and password -->
+        <div class="form-group">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+        </div>
+        <div class="form-group">
+            <input type="email" id="email" name="email" placeholder="Parent's Email" required>
+        </div>
+        <div class="form-group">
+            <input type="password" id="password" name="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn-signup">Sign Up</button>
+        </form>
+    </div>
+
+</div>
+
+
+
+
+    <!-- Footer -->
+    <img src="{% static 'flashlearn/footer.png' %}" alt="Flash Learn footer" class="footer">
+    <span class="footer-text">© 2024 Flash Learn. All rights reserved.</span>
+
+</body>
+</html>

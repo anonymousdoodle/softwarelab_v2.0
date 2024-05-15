@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Teachers</title>
+    <link rel="stylesheet" href="{% static 'flashlearn/adminstyle.css' %}">
+</head>
+<body>
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-logo-link">
+            <img src="{% static 'flashlearn/logotype.png' %}" alt="Flash Learn Logo" class="navbar-logo">
+        </a>
+        <div class="navbar-menu">
+            <ul>
+                <li>
+                    <a id="manage-content">Manage Content</a>
+                    <div class="dropdown-content" id="content-dropdown">
+                        <a href="{% url 'manageteachers' %}">Teachers</a>
+                    </div>
+                </li>
+                <li>
+                    <a id="manage-accounts">Manage Accounts</a>
+                    <div class="dropdown-content" id="accounts-dropdown">
+                        <a href="{% url 'manageusers' %}">Users</a>
+                        <a href="{% url 'manageadmins' %}">Admins</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="managequiz-bg">
+        <div class="mng-box">
+            <div id="manage-label">Manage Content: Teachers</div>
+            <div class="panel-box">
+                <div class="field-name">
+                    <div class="field-name-text">ID</div>
+                    <div class="field-name-text">Image</div>
+                    <div class="field-name-text">Name</div>
+                    <div class="field-name-text">Action</div>
+                </div>
+
+                <form method="post" enctype="multipart/form-data" id="add-teacher-form" action="{% url 'add_teacher' %}">
+                    {% csrf_token %}
+                    <input type="text" name="name" placeholder="Enter teacher's name" required>
+                    <input type="file" name="image" accept="image/*" id="image" required>
+                    <button type="submit">Add Teacher</button>
+                </form>
+
+                <br><br>
+                {% for card in carddata %}
+                <div class="table-row">
+                    <img src="{{ card.image.url }}" alt="{{ card.name }}" style="width: 100px; height: 100px;">
+                    <div class="field-name-text">{{ card.name }}</div>
+                    <button class="btn1 edit-btn" onclick="window.location.href='{% url 'edit_tcards' card.id %}'">Edit</button>
+                    <button class="btn2 delacc" data-cardid="{{ card.id }}">Delete</button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+        $(document).on('click', '.delacc', function() {
+            var cardId = $(this).data('cardid');
+            if (confirm("Are you sure you want to delete this teacher?")) {
+                var csrftoken = getCookie('csrftoken');
+                $.ajax({
+                    type: "POST",
+                    url: "{% url 'delete_teacher' teacher_id=0 %}".replace('0', cardId),
+                    data: {
+                        csrfmiddlewaretoken: csrftoken
+                    },
+                    success: function() {
+                        alert("Teacher deleted successfully!");
+                        location.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("Error deleting teacher: " + xhr.responseText);
+                    }
+                });
+            }
+        });
+
+        $("#add-teacher-form").on("submit", function(event) {
+            var imageInput = document.getElementById("image");
+            var file = imageInput.files[0];
+            if (file) {
+                var img = new Image();
+                img.src = URL.createObjectURL(file);
+                img.onload = function() {
+                    if (img.width < 200 || img.height < 200) {
+                        alert("Image must be at least 200x200 pixels.");
+                        event.preventDefault();
+                    } else {
+                        $("#add-teacher-form").off("submit").submit();
+                    }
+                };
+                return false;
+            }
+        });
+
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = jQuery.trim(cookies[i]);
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+    });
+    </script>
+</body>
+</html>
